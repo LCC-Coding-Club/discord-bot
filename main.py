@@ -30,7 +30,7 @@ import webserver
 #token = os.getenv("DISCORD-TOKEN")
 
 #loads and sets environment discord token for render hosting
-token = os.environ("DISCORD-TOKEN")
+token = os.environ['DISCORD-TOKEN']
 
 #sets up logging
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')

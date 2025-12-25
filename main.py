@@ -3,6 +3,7 @@ from discord.ext import commands
 import logging
 from dotenv import load_dotenv
 import os
+import webserver
 
 # documentation reference: https://discordpy.readthedocs.io/en/stable/
 # Video used to set up bot: https://www.youtube.com/watch?v=YD_N6Ffoojw
@@ -21,11 +22,15 @@ import os
 # if you have the .env file, be careful when you run the bot.
 # If the bot is running in the server DO NOT RUN ANOTHER INSTANCE. 
 # Only one instance of the bot can run at a time.
+# it is reccomended to test with your own separate test bot.
 
 
-#loads and sets environment discord token
-load_dotenv()
-token = os.getenv("DISCORD-TOKEN")
+#loads and sets environment discord token for localhosting
+#load_dotenv()
+#token = os.getenv("DISCORD-TOKEN")
+
+#loads and sets environment discord token for render hosting
+token = os.environ("DISCORD-TOKEN")
 
 #sets up logging
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
@@ -47,6 +52,9 @@ async def on_ready():
 @bot.command()
 async def hello(ctx):
     await ctx.send(f"Hello {ctx.author.mention}!")
+
+# for hosting the bot online 24/7
+webserver.keep_alive()
 
 #log_levels: NOTSET(0), DEBUG(10), INFO(20), WARNING(30), ERROR(40), CRITICAL(50)
 #We cant use logging.debug for reasons

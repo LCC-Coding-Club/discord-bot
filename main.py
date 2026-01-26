@@ -16,20 +16,21 @@ import webserver
 # run pip install -r .\requirements.txt
 # your IDE might require additional setup to run the bot. Try to use google first. If you still cant figure it out, ask for help on discord.
 
-# if you need to test something get the .env file from a club officer.
-# Do NOT share the .env file with anyone outside of club officers.
+# After this please create your own discord bot and own discord server to test!
+# This part should be simple and the video will help you create your own bot.
+# You'll need to create a file ".env"
+# Inside .env you'll need to put DISCORD-TOKEN=
+# comment out the hosting token and uncomment the two localhost token variables
 
-# if you have the .env file, be careful when you run the bot.
-# If the bot is running in the server DO NOT RUN ANOTHER INSTANCE. 
-# Only one instance of the bot can run at a time.
-# it is reccomended to test with your own separate test bot.
+###
+# When you are done and ready to submit for review, Please comment out the local host and uncomment the hosting
+###
 
-
-#loads and sets environment discord token for localhosting
+#Localhost Token: loads and sets environment discord token for localhosting
 #load_dotenv()
 #token = os.getenv("DISCORD-TOKEN")
 
-#loads and sets environment discord token for render hosting
+#Hosting Token: loads and sets environment discord token for render hosting
 token = os.environ['DISCORD-TOKEN']
 
 #sets up logging
@@ -58,4 +59,5 @@ webserver.keep_alive()
 
 #log_levels: NOTSET(0), DEBUG(10), INFO(20), WARNING(30), ERROR(40), CRITICAL(50)
 #We cant use logging.debug for reasons
+
 bot.run(token,log_handler=handler,log_level=10)
